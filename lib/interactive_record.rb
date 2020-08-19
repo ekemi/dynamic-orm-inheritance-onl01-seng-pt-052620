@@ -21,11 +21,13 @@ class InteractiveRecord
     end
     column_names.compact
   end
-  def initialize(options={})
+  def initialize(options={}) #
     options.each do |property, value|
       self.send("#{property}=", value)
     end
   end
+  #self.send('name=', 'Hello') => @name = 'Hello'
+  #self.send('album=', '25')   => @album = '25'
 
   def save
     sql = "INSERT INTO #{table_name_for_insert} (#{col_names_for_insert}) VALUES (#{values_for_insert})"
